@@ -40,9 +40,9 @@ st.title("Customer Renewal Probability Predictor")
 st.write("Enter customer information below.")
 
 
-age = st.number_input("Age", step=1)
-active_days = st.number_input("Active Days", step = 1)
-total_sessions = st.number_input("Total Sessions", step=1)
+age = st.number_input("Age")
+active_days = st.number_input("Active Days")
+total_sessions = st.number_input("Total Sessions")
 gross_length = st.number_input("Gross Session Length")
 income = st.selectbox("Income Range", ["low", "medium", "high", "very high"])
 education = st.radio("Education", ["high school",  "other", "graduate", "post graduate"])

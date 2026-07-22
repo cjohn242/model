@@ -34,12 +34,30 @@ def predict(age, income_level, education, device_type, tech_comfort_score, total
     return probability # Return the raw probability
 
 # Create the Gradio interface
+st.set_page_config(
+    page_title="Customer Renewal Predictor",
+    page_icon="📈",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
 
 st.title("📈 Customer Renewal Probability Predictor")
 
 with st.container():
 
   st.subheader("Enter customer information below.")
+st.sidebar.title("About")
+
+st.sidebar.info(
+"""
+Customer Renewal Prediction Model
+
+Model:
+- Random Forest
+- Accuracy: 95%
+- Built with Streamlit
+"""
+)
 
 col1, col2 = st.columns(2)
 with col1:

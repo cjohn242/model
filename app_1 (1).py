@@ -35,19 +35,24 @@ def predict(age, income_level, education, device_type, tech_comfort_score, total
 
 # Create the Gradio interface
 
-st.title("Customer Renewal Probability Predictor")
+st.title("📈 Customer Renewal Probability Predictor")
 
-st.write("Enter customer information below.")
+with st.container():
 
+  st.subheader("Enter customer information below.")
 
-age = st.number_input("Age", step =1)
-active_days = st.number_input("Active Days", step =1)
-total_sessions = st.number_input("Total Sessions", step=1)
-gross_length = st.number_input("Gross Session Length", step=1)
-income = st.selectbox("Income Range", ["low", "medium", "high", "very high"])
-education = st.radio("Education", ["high school",  "other", "graduate", "post graduate"])
-device = st.selectbox("Device Type", ["multi-device",  "mobile-only", "desktop-only"])
-tech_score= st.slider("Tech Comfort Score", min_value= 0, max_value= 5, step= 1)
+col1, col2 = st.columns(2)
+with col1:
+  age = st.number_input("Age", step =1)
+  active_days = st.number_input("Active Days", step =1)
+  total_sessions = st.number_input("Total Sessions", step=1)
+  gross_length = st.number_input("Gross Session Length", step=1)
+
+with col2:
+  income = st.selectbox("Income Range", ["low", "medium", "high", "very high"])
+  education = st.radio("Education", ["high school",  "other", "graduate", "post graduate"])
+  device = st.selectbox("Device Type", ["multi-device",  "mobile-only", "desktop-only"])
+  tech_score= st.slider("Tech Comfort Score", min_value= 0, max_value= 5, step= 1)
 
 
 if st.button("Predict Renewal Probability"):
@@ -62,17 +67,18 @@ if st.button("Predict Renewal Probability"):
         gross_length,
         active_days
     )
+    with st.container():
 
-    st.metric("Renewal Probability", f"{prediction:.1%}")
+     st.metric("Renewal Probability", f"{prediction:.1%}")
 
     # 7. Color-code the risk level
-    if prediction >= 0.75:
+     if prediction >= 0.75:
         st.success("🟢 Low Risk")
 
-    elif prediction >= 0.50:
-        st.warning("🟡 Medium Risk")
+     elif prediction >= 0.50:
+         st.warning("🟡 Medium Risk")
 
-    else:
+     else:
         st.error("🔴 High Risk")
 
     # 8. Show a progress bar

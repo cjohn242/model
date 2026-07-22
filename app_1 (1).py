@@ -10,6 +10,9 @@ Original file is located at
 import streamlit as st
 import numpy as np
 
+with open("churn_rf_healthym.pkl", "rb") as f:
+    model = pickle.load(f)
+
 # Define the prediction function
 def predict(age, income_level, education, device_type, tech_comfort_score, total_sessions, gross_session_length, active_days):
     # Define categories in the same order as used during training
@@ -36,9 +39,9 @@ st.title("Customer Renewal Probability Predictor")
 st.write("Enter customer information below.")
 
 
-age = st.number_input("Age")
-active_days = st.number_input("Active Days")
-total_sessions = st.number_input("Total Sessions")
+age = st.number_input("Age", step=1)
+active_days = st.number_input("Active Days", step = 1)
+total_sessions = st.number_input("Total Sessions", step=1)
 gross_length = st.number_input("Gross Session Length")
 income = st.selectbox("Income Range", ["low", "medium", "high", "very high"])
 education = st.radio("Education", ["high school",  "other", "graduate", "post graduate"])

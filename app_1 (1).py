@@ -9,6 +9,7 @@ Original file is located at
 
 import streamlit as st
 import numpy as np
+import pickle
 
 with open("churn_rf_healthym.pkl", "rb") as f:
     model = pickle.load(f)

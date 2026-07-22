@@ -54,7 +54,7 @@ Customer Renewal Prediction Model
 
 Model:
 - Random Forest
-- Accuracy: 95%
+- Accuracy: 87%
 - Built with Streamlit
 """
 )
